@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { ThemeProvider } from "styled-components";
+import { Button, Card, Container, GlobalStyle, Header, Title } from "./assets/styles";
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  // para utilizar o themeProvider
+  const theme = {
+    borderColor: '#1A1B1C',
+    textColor: '#1FB621',
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <GlobalStyle />
+      <Header>
+        <Title color="#1F7659">
+          Componente estilizado com Props
+        </Title>
+      </Header>
+      <ThemeProvider theme={theme}>
+      <Container>
+        <p>Conteúdo</p>
+      </Container>
+        <Card>
+          <h2>Título do card</h2>
+          <p>Conteúdo do Card</p>
+        </Card>
+      </ThemeProvider>
+
+      <Button>
+        Clique aqui!
+      </Button>
     </>
-  )
+
+
+  );
 }
 
-export default App
+export default App;
